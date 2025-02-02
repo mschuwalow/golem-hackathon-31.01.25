@@ -3,8 +3,17 @@ package golem-example:billing;
 // See https://component-model.bytecodealliance.org/design/wit.html for more details about the WIT syntax
 
 interface golem-example-billing-api {
-  add: func(value: u64);
-  get: func() -> u64;
+  use golem:api/host@0.2.0.{promise-id};
+
+  resource billing-entity {
+    constructor(id: u64);
+    completion-promise: func() -> promise-id;
+  }
+
+  record billing {
+    id: u64,
+    instance: billing-entity
+  }
 }
 
 world golem-example-billing {

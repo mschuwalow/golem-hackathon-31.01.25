@@ -6,3 +6,7 @@
 components:
   golem-example:order:
     template: rust
+dependencies:
+  golem-example:order:
+  - target: golem-example:billing
+    type: wasm-rpc

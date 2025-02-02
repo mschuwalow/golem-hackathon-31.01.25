@@ -3,38 +3,29 @@ mod bindings;
 use crate::bindings::exports::golem_example::billing_exports::golem_example_billing_api::Guest;
 // Import for using common lib:
 // use common_lib::example_common_function;
-use std::cell::RefCell;
 
-/// This is one of any number of data types that our application
-/// uses. Golem will take care to persist all application state,
-/// whether that state is local to a function being executed or
-/// global across the entire program.
-struct State {
-    total: u64,
+use self::bindings::exports::golem_example::billing_exports::golem_example_billing_api::GuestBillingEntity;
+
+struct Entity {
+    id: u64
 }
 
-thread_local! {
-    /// This holds the state of our application.
-    static STATE: RefCell<State> = RefCell::new(State {
-        total: 0,
-    });
+impl GuestBillingEntity for Entity {
+    fn new(id: u64) -> Self {
+        Self { id }
+    }
+
+    fn completion_promise(&self) -> bindings::exports::golem_example::billing_exports::golem_example_billing_api::PromiseId {
+        let promise_id = bindings::golem::api::host::create_promise();
+        bindings::golem::api::host::complete_promise(&promise_id, &vec![]);
+        promise_id
+    }
 }
 
 struct Component;
 
 impl Guest for Component {
-    /// Updates the component's state by adding the given value to the total.
-    fn add(value: u64) {
-        STATE.with_borrow_mut(|state| state.total += value);
-    }
-
-    /// Returns the current total.
-    fn get() -> u64 {
-        // Call code from shared lib
-        // println!("{}", example_common_function());
-
-        STATE.with_borrow(|state| state.total)
-    }
+    type BillingEntity = Entity;
 }
 
 bindings::export!(Component with_types_in bindings);

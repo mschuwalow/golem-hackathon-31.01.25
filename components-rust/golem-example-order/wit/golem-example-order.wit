@@ -3,8 +3,22 @@ package golem-example:order;
 // See https://component-model.bytecodealliance.org/design/wit.html for more details about the WIT syntax
 
 interface golem-example-order-api {
-  add: func(value: u64);
-  get: func() -> u64;
+  use golem-example:billing-exports/golem-example-billing-api.{billing};
+
+  record order-data {
+    id: u64
+  }
+
+  resource order-entity {
+    constructor(id: u64);
+    dehydrate: func() -> order-data;
+  }
+
+  record order {
+    id: u64,
+    billing: billing,
+    instance: order-entity
+  }
 }
 
 world golem-example-order {

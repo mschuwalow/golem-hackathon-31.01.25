@@ -15,3 +15,40 @@ Unintuitive that I need to adjust Cargo.toml to get imports working.
 "golem:api" = { path = "../../common-wit-deps/golem" }
 "golem:rpc" = { path = "../../common-wit-deps/wasm-rpc" }
 ```
+---
+This error / naming is very awkward:
+```
+Error:
+  Direct WIT package reference to component golem-example:billing main package golem-example:billing is not supported.
+  For using component clients, declare them in the app manifest as WASM-RPC dependency.
+  For using exported types from another component, use the component 'exports' package (e.g.: ns:package-name-exports).
+
+  component name: golem-example:billing-service
+package name: golem-example:billing-service
+source: /home/mschuwalow/ghq/github.com/mschuwalow/golem-hackathon-31.01.25/components-rust/golem-example-billing-service/golem.yaml
+referenced package name: golem-example:billing
+```
+---
+Wit deps during client build for import (using wasm-rpc dependency) fails due to version mismatch
+```
+--> golem-temp/client/golem-example_billing/temp-build/wit/deps/golem/golem-host.wit:6:9
+  |
+6 |     use golem:rpc/types@0.1.0.{uri};
+  |         ^--------
+```
+
+generated code:
+```
+package golem:rpc@0.1.1;
+
+interface types {
+  use wasi:io/poll@0.2.0.{pollable};
+
+  type node-index = s32;
+
+  record wit-value {
+    nodes: list<wit-node>,
+  }
+
+...
+```

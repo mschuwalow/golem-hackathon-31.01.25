@@ -3,8 +3,9 @@ package golem-example:billing-service;
 // See https://component-model.bytecodealliance.org/design/wit.html for more details about the WIT syntax
 
 interface golem-example-billing-service-api {
-  add: func(value: u64);
-  get: func() -> u64;
+  use golem-example:billing-exports/golem-example-billing-api.{billing};
+
+  new-billing: func() -> billing;
 }
 
 world golem-example-billing-service {

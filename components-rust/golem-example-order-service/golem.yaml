@@ -6,3 +6,7 @@
 components:
   golem-example:order-service:
     template: rust
+dependencies:
+  golem-example:order-service:
+  - target: golem-example:order
+    type: wasm-rpc
