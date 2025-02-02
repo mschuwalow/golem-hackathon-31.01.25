@@ -3,11 +3,11 @@ package golem-example:order-service;
 // See https://component-model.bytecodealliance.org/design/wit.html for more details about the WIT syntax
 
 interface golem-example-order-service-api {
-  use golem-example:billing-exports/golem-example-order-api.{order, order-data};
+  use golem-example:order-exports/golem-example-order-api.{order, order-data, cart};
 
-  new-order: func() -> order;
+  new-order: func(cart: cart) -> order;
   // server from db or some other persistence
-  list-all-orders: func() -> list<order-data>
+  list-all-orders: func() -> list<order-data>;
 }
 
 world golem-example-order-service {

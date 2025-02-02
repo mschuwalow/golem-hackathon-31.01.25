@@ -4,20 +4,23 @@ package golem-example:order;
 
 interface golem-example-order-api {
   use golem-example:billing-exports/golem-example-billing-api.{billing};
-  use golem-example:shipment-exports/golem-example-shipments-api.{shipment};
+  use golem-example:shipment-exports/golem-example-shipment-api.{shipment};
+
+  record cart {}
 
   record order-data {
     id: u64
   }
 
   resource order-entity {
-    constructor(id: u64);
+    constructor(id: u64, cart: cart);
     dehydrate: func() -> order-data;
   }
 
   record order {
     id: u64,
     billing: billing,
+    shipment: shipment,
     instance: order-entity
   }
 }
