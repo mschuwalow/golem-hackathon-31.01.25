@@ -1,6 +1,6 @@
 mod bindings;
 
-use crate::bindings::exports::golem_example::orders_exports::golem_example_orders_api::Guest;
+use crate::bindings::exports::golem_example::shipment_exports::golem_example_shipment_api::Guest;
 // Import for using common lib:
 // use common_lib::example_common_function;
 use std::cell::RefCell;

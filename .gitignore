@@ -14,9 +14,9 @@
 **/*.rs.bk
 *.pdb
 .bin
+.golem-data
 /golem-temp
 /target
 Cargo.lock
 debug/
 target/
-.golem-data

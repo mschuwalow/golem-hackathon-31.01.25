@@ -4,5 +4,5 @@
 # yaml-language-server: $schema=https://schema.golem.cloud/app/golem/1.1.1/golem.schema.json
 
 components:
-  golem-example:reference-id-manager:
+  golem-example:shipment:
     template: rust

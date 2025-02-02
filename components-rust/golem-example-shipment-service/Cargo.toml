@@ -1,13 +1,13 @@
 [package]
-name = "golem_example_shipping"
+name = "golem_example_shipment_service"
 version = "0.0.1"
 edition = "2021"
 
 [package.metadata.component.target]
 path = "wit-generated"
 
-[package.metadata.component.target.dependencies."golem-example:shipping-exports"]
-path = "wit-generated/deps/golem-example_shipping-exports"
+[package.metadata.component.target.dependencies."golem-example:shipment-service-exports"]
+path = "wit-generated/deps/golem-example_shipment-service-exports"
 
 [dependencies.common-lib]
 path = "../../common-rust/common-lib"

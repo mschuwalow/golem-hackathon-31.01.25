@@ -1,12 +1,12 @@
-package golem-example:warehouse;
+package golem-example:order;
 
 // See https://component-model.bytecodealliance.org/design/wit.html for more details about the WIT syntax
 
-interface golem-example-warehouse-api {
+interface golem-example-order-api {
   add: func(value: u64);
   get: func() -> u64;
 }
 
-world golem-example-warehouse {
-  export golem-example-warehouse-api;
+world golem-example-order {
+  export golem-example-order-api;
 }
