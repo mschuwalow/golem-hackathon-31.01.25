@@ -3,8 +3,9 @@ package golem-example:shipment-service;
 // See https://component-model.bytecodealliance.org/design/wit.html for more details about the WIT syntax
 
 interface golem-example-shipment-service-api {
-  add: func(value: u64);
-  get: func() -> u64;
+  use golem-example:shipment-exports/golem-example-shipment-api.{shipment};
+
+  new-shipment: func() -> shipment;
 }
 
 world golem-example-shipment-service {

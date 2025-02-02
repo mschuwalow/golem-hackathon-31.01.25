@@ -3,8 +3,17 @@ package golem-example:shipment;
 // See https://component-model.bytecodealliance.org/design/wit.html for more details about the WIT syntax
 
 interface golem-example-shipment-api {
-  add: func(value: u64);
-  get: func() -> u64;
+  use golem:api/host@0.2.0.{promise-id};
+
+  resource shipment-entity {
+    constructor(id: u64);
+    completion-promise: func() -> promise-id;
+  }
+
+  record shipment {
+    id: u64,
+    instance: shipment-entity
+  }
 }
 
 world golem-example-shipment {

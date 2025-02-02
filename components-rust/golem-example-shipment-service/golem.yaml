@@ -6,3 +6,7 @@
 components:
   golem-example:shipment-service:
     template: rust
+dependencies:
+  golem-example:shipment-service:
+  - target: golem-example:shipment
+    type: wasm-rpc

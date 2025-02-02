@@ -4,6 +4,7 @@ package golem-example:order;
 
 interface golem-example-order-api {
   use golem-example:billing-exports/golem-example-billing-api.{billing};
+  use golem-example:shipment-exports/golem-example-shipments-api.{shipment};
 
   record order-data {
     id: u64
