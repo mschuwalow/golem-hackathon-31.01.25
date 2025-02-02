@@ -1,0 +1,12 @@
+package golem-example:orders;
+
+// See https://component-model.bytecodealliance.org/design/wit.html for more details about the WIT syntax
+
+interface golem-example-orders-api {
+  add: func(value: u64);
+  get: func() -> u64;
+}
+
+world golem-example-orders {
+  export golem-example-orders-api;
+}

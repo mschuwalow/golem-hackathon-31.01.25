@@ -1,0 +1,33 @@
+[package]
+name = "golem_example_billing"
+version = "0.0.1"
+edition = "2021"
+
+[package.metadata.component.target]
+path = "wit-generated"
+
+[package.metadata.component.target.dependencies."golem-example:billing-exports"]
+path = "wit-generated/deps/golem-example_billing-exports"
+
+[dependencies.common-lib]
+path = "../../common-rust/common-lib"
+
+[dependencies.golem-rust]
+workspace = true
+
+[dependencies.reqwest]
+workspace = true
+
+[dependencies.serde]
+workspace = true
+
+[dependencies.serde_json]
+workspace = true
+
+[dependencies.wit-bindgen-rt]
+workspace = true
+
+[lib]
+path = "src/lib.rs"
+crate-type = ["cdylib"]
+required-features = []

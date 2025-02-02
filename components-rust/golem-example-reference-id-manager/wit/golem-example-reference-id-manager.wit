@@ -1,0 +1,11 @@
+package golem-example:reference-id-manager;
+
+// See https://component-model.bytecodealliance.org/design/wit.html for more details about the WIT syntax
+
+interface golem-example-reference-id-manager-api {
+  new-reference-id: func() -> u64;
+}
+
+world golem-example-reference-id-manager {
+  export golem-example-reference-id-manager-api;
+}

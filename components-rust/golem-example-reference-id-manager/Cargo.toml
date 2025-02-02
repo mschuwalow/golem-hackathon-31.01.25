@@ -1,0 +1,33 @@
+[package]
+name = "golem_example_reference_id_manager"
+version = "0.0.1"
+edition = "2021"
+
+[package.metadata.component.target]
+path = "wit-generated"
+
+[package.metadata.component.target.dependencies."golem-example:reference-id-manager-exports"]
+path = "wit-generated/deps/golem-example_reference-id-manager-exports"
+
+[dependencies.common-lib]
+path = "../../common-rust/common-lib"
+
+[dependencies.golem-rust]
+workspace = true
+
+[dependencies.reqwest]
+workspace = true
+
+[dependencies.serde]
+workspace = true
+
+[dependencies.serde_json]
+workspace = true
+
+[dependencies.wit-bindgen-rt]
+workspace = true
+
+[lib]
+path = "src/lib.rs"
+crate-type = ["cdylib"]
+required-features = []

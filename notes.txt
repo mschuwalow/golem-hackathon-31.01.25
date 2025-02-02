@@ -1,0 +1,17 @@
+cli does not detect imported files if explicit --app is given
+```
+golem component add --app ./golem.yaml --component-name golem-example:reference-id-manager
+```
+---
+default imports for bindings are not working:
+
+`use crate::bindings::exports::golem_example::billing_exports::golem_example_billing_api::Guest;`
+vs.
+`use crate::bindings::exports::golem_example::billing::golem_example_billing_api::Guest;`
+---
+Unintuitive that I need to adjust Cargo.toml to get imports working.
+```
+[package.metadata.component.target.dependencies]
+"golem:api" = { path = "../../common-wit-deps/golem" }
+"golem:rpc" = { path = "../../common-wit-deps/wasm-rpc" }
+```
